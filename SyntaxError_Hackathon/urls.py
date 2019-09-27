@@ -21,3 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^AllInOne/', include('AllInOne.urls')),
 ]
+
+#Hey this is Deepak here!!
