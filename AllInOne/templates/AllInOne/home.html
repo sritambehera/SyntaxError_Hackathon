@@ -1,11 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>AllInOne</title>
-</head>
+{% extends 'base.html' %}
+
+{% block content %}
 <body>
-<h1> Welcome</h1>
-<a href="http://127.0.0.1:8000/AllInOne/SignUp">SignUp Here</a>
-</form>
+	
+	<h2>Wel Come</h2>
+	<br>
+	<a href="http://127.0.0.1:4321/AllInOne/Login">Login here</a><br>
+	<a href="http://127.0.0.1:4321/AllInOne/SignUp">SignUp here</a>
+    {% if user.is_authenticated %}
+		<form action="/AllInOne/Logout/" method = "POST">
+		{% csrf_token %}
+		{{form}}
+		<input type="submit" value="Logout">
+	</form>
+	<a href="http://127.0.0.1:4321/AllInOne/ChangePassword">changepassword</a>
+	{% endif %}
+
 </body>
-</html>
+
+{% endblock %}

@@ -1,16 +1,14 @@
-{% extends 'AllInOne/home.html' %}
+{% extends 'base.html' %}
+
 {% block content %}
-
 <body>
-<form action="/AllInOne/SignUp/" method="POST" name="logout">
-{% csrf_token %}
-{{form}}
-<input type="submit" value="SignUp">
-
-</form>
-
+	<form action="/AllInOne/SignUp/" method = "POST">
+		{% csrf_token %}
+		{{form}}
+		<input type="submit" value="SignUp">
+		
+	</form>
+		
 </body>
-
-
 
 {% endblock %}
