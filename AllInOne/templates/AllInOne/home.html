@@ -3,17 +3,22 @@
 {% block content %}
 <body>
 	
-	<h2>Wel Come</h2>
-	<br>
-	<a href="http://127.0.0.1:4321/AllInOne/Login">Login here</a><br>
-	<a href="http://127.0.0.1:4321/AllInOne/SignUp">SignUp here</a>
+	<h2>Wel Come</h2><br>
+
     {% if user.is_authenticated %}
+    <p>Welcome {{ user.username }}</p>
 		<form action="/AllInOne/Logout/" method = "POST">
 		{% csrf_token %}
-		{{form}}
+		{{form.as_p}}
 		<input type="submit" value="Logout">
 	</form>
-	<a href="http://127.0.0.1:4321/AllInOne/ChangePassword">changepassword</a>
+	<a href="http://127.0.0.1:4321/AllInOne/ChangePassword">
+	changepassword</a><br>
+	
+	{% else %}
+		<a href="http://127.0.0.1:4321/AllInOne/Login">Login here</a><br>
+	<a href="http://127.0.0.1:4321/AllInOne/SignUp">SignUp here</a><br>
+	<a href="http://127.0.0.1:4321/AllInOne/Upload">upload</a>
 	{% endif %}
 
 </body>
