@@ -12,7 +12,7 @@ def Upload(request):
 		form = UploadFileForm(request.POST, request.FILES)
 		if form.is_valid():
 			form.save()
-		return redirect(request, '/AllInOne/')
+		return redirect('/AllInOne')
 
 	else:
 		form = UploadFileForm()
