@@ -13,7 +13,11 @@ def Upload(request):
 		if form.is_valid():
 			form.save()
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return redirect('/AllInOne')
+=======
+		return redirect('/AllInOne/Upload')
+>>>>>>> 313d98b... temporary
 =======
 		return redirect('/AllInOne/Upload')
 >>>>>>> 313d98b... temporary
