@@ -3,19 +3,29 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, Pass
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
-from .forms import UploadFileForm
-from .models import Paper
+from .forms import BranchForm, SemesterForm, MaterialForm
+from .models import Branch , Semester, Material
 
 @login_required(login_url="/AllInOne/Login/")
 def Upload(request):
 	if request.method == 'POST':
-		form = UploadFileForm(request.POST, request.FILES)
-		if form.is_valid():
-			form.save()
+
+		a = BranchForm(request.POST)
+		b = SemesterForm(request.POST)
+		c = MaterialForm(request.POST, request.FILES)
+		a_valid = a.is_valid()
+		b_valid = b.is_valid()
+		c_valid = c.is_valid()
+		if a_valid and b_valid and c_valid:
+			a.save()
+			b.save()
+			c.save()
 		return redirect('/AllInOne')
 	else:
-		form = UploadFileForm()
-	return render(request, 'AllInOne/upload.html', {'form': form})
+		a = BranchForm()
+		b = SemesterForm()
+		c = MaterialForm()
+	return render(request, 'AllInOne/upload.html', {'a': a, 'b' : b , 'c': c})
 
 
 

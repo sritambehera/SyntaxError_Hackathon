@@ -4,7 +4,10 @@
 <body>
 	<form action="/AllInOne/Upload/" enctype="multipart/form-data" method = "POST" name ="file">
 		{% csrf_token %}
-		{{ form.as_p }}
+		{{ a.as_p }}
+		{{ b.as_p }}
+		{{ c.as_p }}
+
 
 		<button type="submit">UPLOAD</button>
 		

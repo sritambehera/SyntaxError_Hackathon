@@ -5,7 +5,15 @@ from django.conf import settings
 
 
 
-class Paper(models.Model):
-	file =models.FileField(upload_to ='documents/')
+class Material(models.Model):
+	material =models.FileField(upload_to ='documents/')
+
+
+class Branch(models.Model):
 	branch = models.CharField(max_length = 50)
-	semester = models.IntegerField( choices =  list(zip(range(1,7), range(1,7))), unique = True)
+
+
+class Semester(models.Model):
+	semester = models.IntegerField( choices =  list(zip(range(1,11), range(1,11))), unique = True)
+
+
