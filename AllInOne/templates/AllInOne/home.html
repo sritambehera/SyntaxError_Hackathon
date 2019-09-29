@@ -54,11 +54,11 @@
 	{% endif %}
     
 	 <span class="head_nav" style="margin-left: 50px;"><a href="#" style="text-decoration:none;">About us</a></span> 
-	 <span class="head_nav"><a href="http://127.0.0.1:4321/AllInOne/Login" style="text-decoration:none;">Login</a></span>  
-	 <span class="head_nav"><a href="http://127.0.0.1:4321/AllInOne/SignUp" style="text-decoration:none;">Signup</a></span>
+	 <span class="head_nav"><a href="/AllInOne/Login" style="text-decoration:none;">Login</a></span>  
+	 <span class="head_nav"><a href="/AllInOne/SignUp" style="text-decoration:none;">Signup</a></span>
 	 <span class="head_nav"><a href="#" style="text-decoration:none;">Top contributers</a></span>
-	 <span class="head_nav"><a href="http://127.0.0.1:4321/AllInOne/Upload" style="text-decoration:none;">Upload</a></span>
-	 <span class="head_nav"><a href="http://127.0.0.1:4321/AllInOne/ChangePassword" style="text-decoration:none;">Chage Password</a></span>
+	 <span class="head_nav"><a href="/AllInOne/Upload" style="text-decoration:none;">Upload</a></span>
+	 <span class="head_nav"><a href="/AllInOne/ChangePassword" style="text-decoration:none;">Chage Password</a></span>
 	 {% if user.is_authenticated %}
 	 <span class="head_nav" style="margin-left: 100px;"><form style="margin-left: 100px;" action="/AllInOne/Logout/" method = "POST">
 		{% csrf_token %}
