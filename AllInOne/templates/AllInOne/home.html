@@ -1,25 +1,781 @@
-{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ALL IN ONE</title>
 
-{% block content %}
-<body>
+<link rel="stylesheet" type="text/css" href="{% static '/AllInOne/style.css' %}"/>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     
+ <script>
+	 var res1="#";
+	 var res2="#";
+	 var res3=""
+		$(document).ready(function(){
+			$("#branchs").on('change',function(){
+				//var optionValue = $(this).val();
+				//var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
+				var optionText = $("#branchs option:selected").val();
+				var dd=res1.concat("",optionText)
+				$("#search_anch").attr("href",dd.concat("",res3));
+				res2=res1.concat("",optionText);
+			//	res=res.concat("",optionText);
+				//alert("Selected Option Text: "+optionText);
+				//res=optionText;
+			});
+		});
+		$(document).ready(function(){
+			$("#semesters").on('change',function(){
+				//var optionValue = $(this).val();
+				//var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
+				var optionText = $("#semesters option:selected").val();
+				 res3= optionText;
+				$("#search_anch").attr("href",res2.concat("",optionText));
+			//	res1="#"
+			//alert("Selected Option Text: "+res);
+				 
+				
+			});
+		});
+
+		  </script>
+
+
+</head>
+<body>	
+
+<div id="heading_div">
+	<span class="head_nav" style="margin-left: 100px;">ALL IN ONE</span>
 	
-	<h2>Wel Come</h2><br>
-
-    {% if user.is_authenticated %}
-    <p>Welcome {{ user.username }}</p>
-		<form action="/AllInOne/Logout/" method = "POST">
+	{% if user.is_authenticated %}
+	<span class="head_nav" style="margin-left: 200px;">Welcome <a href = "#" style="text-decoration: none;">{{user.username}}</a></span>
+	{% endif %}
+    
+	 <span class="head_nav" style="margin-left: 50px;"><a href="#" style="text-decoration:none;">About us</a></span> 
+	 <span class="head_nav"><a href="http://127.0.0.1:4321/AllInOne/Login" style="text-decoration:none;">Login</a></span>  
+	 <span class="head_nav"><a href="http://127.0.0.1:4321/AllInOne/SignUp" style="text-decoration:none;">Signup</a></span>
+	 <span class="head_nav"><a href="#" style="text-decoration:none;">Top contributers</a></span>
+	 <span class="head_nav"><a href="http://127.0.0.1:4321/AllInOne/Upload" style="text-decoration:none;">Upload</a></span>
+	 <span class="head_nav"><a href="http://127.0.0.1:4321/AllInOne/ChangePassword" style="text-decoration:none;">Chage Password</a></span>
+	 {% if user.is_authenticated %}
+	 <span class="head_nav" style="margin-left: 100px;"><form style="margin-left: 100px;" action="/AllInOne/Logout/" method = "POST">
 		{% csrf_token %}
 		{{form.as_p}}
 		<input type="submit" value="Logout">
-	</form>
-	<a href="http://127.0.0.1:4321/AllInOne/ChangePassword">
-	changepassword</a><br>
-	
-	{% else %}
-		<a href="http://127.0.0.1:4321/AllInOne/Login">Login here</a><br>
-	<a href="http://127.0.0.1:4321/AllInOne/SignUp">SignUp here</a><br>
+	</form></span>
 	{% endif %}
-   <a href="http://127.0.0.1:4321/AllInOne/Upload">upload</a>
-</body>
+	  
+</div>	  
+
+
+ <span style="position: absolute;top: 18%;left: 18%;">
+	
+	Select your branch <select id="branchs"  style="margin-left:15px;margin-right:80px;">
+										<option value="" ></option>
+										<option value="cse" >Computer Science Engineering</option>
+										<option value="ece" >Electronics & Communication Engineering</option>
+										<option value="ee">Electrical Engineering</option>
+										<option value="ce">Civil Engineering</option>
+										<option value="me">Mechanical Engineering</option>
+									  </select>
+
+	Select your semester<select id="semesters" style="margin-left:15px;margin-right:80px;">
+					<option value="" ></option>
+					<option value="sem1">Semester1</option>
+					<option value="sem2">Semester2</option>
+					<option value="sem3">Semester3</option>
+					<option value="sem4">Semester4</option>
+					<option value="sem5">Semester5</option>
+					<option value="sem6">Semester6</option>
+					<option value="sem7">Semester7</option>
+					<option value="sem8">Semester8</option>
+				  </select>		
+
+	 <a  id="search_anch" href="#" ><u>Jump to desired page</u></a>			  
+
+
+</span>
+ 
+
+
+
+
+
+
+
+<div style="position: fixed;bottom: 80px;right: 20px;"><a href="#">Back to Top</a></div>
+
+
+
+
+
+
+	<!--All branch data....branchwise-->
+
+ 
+
+<!--CSE branch data-->	
+  
+<div class="branch_div" id="cse">
+	<center><h1>Computer Science Engneering</h1></center>  
+	<!--Semester1-->
+	<div class="semester_div" id="csesem1">
+		   <h2>Semester1</h2> <hr> 
+		   <div class="semester_content">
+			   <h2>Books</h2> 
+				<table>
+						<tr>
+						  <th>Name</th>
+						  <th>Added by</th>
+						  <th>Enrollment no</th>
+						  <th>Date added</th>
+						</tr>
+		 		
+						<tr>
+						  <td>Deepak</td>
+						  <td>Deepak</td>
+						  <td>Deepak</td>
+						  <td>Deepak</td>
+						</tr>	
+		 								 
+				</table>
+		   </div>
+
+		   <div class="semester_content">
+				<h2>Papers</h2> 
+				<table>
+						<tr>
+						  <th>Name</th>
+						  <th>Added by</th>
+						  <th>Enrollment no</th>
+						  <th> Date added</th>
+						</tr>
+					
+						<tr>
+						  <td>MTE valkenberg 2019</td>
+						  <td>Deepak Kumar</td>
+						  <td>18116026</td>
+						  <td>27/09/2019</td>
+						</tr>	
+						
+				</table>
+		   </div>
+	</div>
+	<!--Semester2-->
+	<div class="semester_div" id="csesem2">
+			<h2>Semester2</h2> <hr> 
+			<div class="semester_content">
+				<h2>Books</h2> 
+				 <table>
+						 <tr>
+						   <th>Name</th>
+						   <th>Added by</th>
+						   <th>Enrollment no</th>
+						   <th>Date added</th>
+						 </tr>
+						 <tr>
+						   <td>oppenhenum-signal</td>
+						   <td>Deepak kumar</td>
+						   <td>18116026</td>
+						   <td>27/09/2019</td>
+						 </tr>						 
+				 </table>
+			</div>
+ 
+			<div class="semester_content">
+				 <h2>Papers</h2> 
+				 <table>
+						 <tr>
+						   <th>Name</th>
+						   <th>Added by</th>
+						   <th>Enrollment no</th>
+						   <th> Date added</th>
+						 </tr>
+						 <tr>
+						   <td>MTE valkenberg 2019</td>
+						   <td>Deepak Kumar</td>
+						   <td>18116026</td>
+						   <td>27/09/2019</td>
+						 </tr>		
+				 </table>
+			</div>
+	 </div>
+	 <!--Semester3-->
+	<div class="semester_div" id="csesem3">
+			<h2>Semester3</h2> <hr> 
+			<div class="semester_content">
+				<h2>Books</h2> 
+				 <table>
+						 <tr>
+						   <th>Name</th>
+						   <th>Added by</th>
+						   <th>Enrollment no</th>
+						   <th>Date added</th>
+						 </tr>
+						 <tr>
+						   <td>oppenhenum-signal</td>
+						   <td>Deepak kumar</td>
+						   <td>18116026</td>
+						   <td>27/09/2019</td>
+						 </tr>						 
+				 </table>
+			</div>
+ 
+			<div class="semester_content">
+				 <h2>Papers</h2> 
+				 <table>
+						 <tr>
+						   <th>Name</th>
+						   <th>Added by</th>
+						   <th>Enrollment no</th>
+						   <th> Date added</th>
+						 </tr>
+						 <tr>
+						   <td>MTE valkenberg 2019</td>
+						   <td>Deepak Kumar</td>
+						   <td>18116026</td>
+						   <td>27/09/2019</td>
+						 </tr>		
+				 </table>
+			</div>
+	 </div>
+	 <!--Semester4-->
+	<div class="semester_div" id="csesem4">
+			<h2>Semester4</h2> <hr> 
+			<div class="semester_content">
+				<h2>Books</h2> 
+				 <table>
+						 <tr>
+						   <th>Name</th>
+						   <th>Added by</th>
+						   <th>Enrollment no</th>
+						   <th>Date added</th>
+						 </tr>
+						 <tr>
+						   <td>oppenhenum-signal</td>
+						   <td>Deepak kumar</td>
+						   <td>18116026</td>
+						   <td>27/09/2019</td>
+						 </tr>						 
+				 </table>
+			</div>
+ 
+			<div class="semester_content">
+				 <h2>Papers</h2> 
+				 <table>
+						 <tr>
+						   <th>Name</th>
+						   <th>Added by</th>
+						   <th>Enrollment no</th>
+						   <th> Date added</th>
+						 </tr>
+						 <tr>
+						   <td>MTE valkenberg 2019</td>
+						   <td>Deepak Kumar</td>
+						   <td>18116026</td>
+						   <td>27/09/2019</td>
+						 </tr>		
+				 </table>
+			</div>
+	 </div>
+	 <!--Semester5-->
+	<div class="semester_div" id="csesem5">
+			<h2>Semester5</h2> <hr> 
+			<div class="semester_content">
+				<h2>Books</h2> 
+				 <table>
+						 <tr>
+						   <th>Name</th>
+						   <th>Added by</th>
+						   <th>Enrollment no</th>
+						   <th>Date added</th>
+						 </tr>
+						 <tr>
+						   <td>oppenhenum-signal</td>
+						   <td>Deepak kumar</td>
+						   <td>18116026</td>
+						   <td>27/09/2019</td>
+						 </tr>						 
+				 </table>
+			</div>
+ 
+			<div class="semester_content">
+				 <h2>Papers</h2> 
+				 <table>
+						 <tr>
+						   <th>Name</th>
+						   <th>Added by</th>
+						   <th>Enrollment no</th>
+						   <th> Date added</th>
+						 </tr>
+						 <tr>
+						   <td>MTE valkenberg 2019</td>
+						   <td>Deepak Kumar</td>
+						   <td>18116026</td>
+						   <td>27/09/2019</td>
+						 </tr>		
+				 </table>
+			</div>
+	 </div>
+	 <!--Semester6-->
+	<div class="semester_div" id="csesem6">
+			<h2>Semester6</h2> <hr> 
+			<div class="semester_content">
+				<h2>Books</h2> 
+				 <table>
+						 <tr>
+						   <th>Name</th>
+						   <th>Added by</th>
+						   <th>Enrollment no</th>
+						   <th>Date added</th>
+						 </tr>
+						 <tr>
+						   <td>oppenhenum-signal</td>
+						   <td>Deepak kumar</td>
+						   <td>18116026</td>
+						   <td>27/09/2019</td>
+						 </tr>						 
+				 </table>
+			</div>
+ 
+			<div class="semester_content">
+				 <h2>Papers</h2> 
+				 <table>
+						 <tr>
+						   <th>Name</th>
+						   <th>Added by</th>
+						   <th>Enrollment no</th>
+						   <th> Date added</th>
+						 </tr>
+						 <tr>
+						   <td>MTE valkenberg 2019</td>
+						   <td>Deepak Kumar</td>
+						   <td>18116026</td>
+						   <td>27/09/2019</td>
+						 </tr>		
+				 </table>
+			</div>
+	 </div>
+	 <!--Semester7-->
+	<div class="semester_div" id="csesem7">
+			<h2>Semester7</h2> <hr> 
+			<div class="semester_content">
+				<h2>Books</h2> 
+				 <table>
+						 <tr>
+						   <th>Name</th>
+						   <th>Added by</th>
+						   <th>Enrollment no</th>
+						   <th>Date added</th>
+						 </tr>
+						 <tr>
+						   <td>oppenhenum-signal</td>
+						   <td>Deepak kumar</td>
+						   <td>18116026</td>
+						   <td>27/09/2019</td>
+						 </tr>						 
+				 </table>
+			</div>
+ 
+			<div class="semester_content">
+				 <h2>Papers</h2> 
+				 <table>
+						 <tr>
+						   <th>Name</th>
+						   <th>Added by</th>
+						   <th>Enrollment no</th>
+						   <th> Date added</th>
+						 </tr>
+						 <tr>
+						   <td>MTE valkenberg 2019</td>
+						   <td>Deepak Kumar</td>
+						   <td>18116026</td>
+						   <td>27/09/2019</td>
+						 </tr>		
+				 </table>
+			</div>
+	 </div>
+	 <!--Semester8-->
+	<div class="semester_div" id="csesem8">
+			<h2>Semester8</h2> <hr> 
+			<div class="semester_content">
+				<h2>Books</h2> 
+				 <table>
+						 <tr>
+						   <th>Name</th>
+						   <th>Added by</th>
+						   <th>Enrollment no</th>
+						   <th>Date added</th>
+						 </tr>
+						 <tr>
+						   <td>oppenhenum-signal</td>
+						   <td>Deepak kumar</td>
+						   <td>18116026</td>
+						   <td>27/09/2019</td>
+						 </tr>						 
+				 </table>
+			</div>
+ 
+			<div class="semester_content">
+				 <h2>Papers</h2> 
+				 <table>
+						 <tr>
+						   <th>Name</th>
+						   <th>Added by</th>
+						   <th>Enrollment no</th>
+						   <th> Date added</th>
+						 </tr>
+						 <tr>
+						   <td>MTE valkenberg 2019</td>
+						   <td>Deepak Kumar</td>
+						   <td>18116026</td>
+						   <td>27/09/2019</td>
+						 </tr>		
+				 </table>
+			</div>
+	 </div>
+	 <div class="balancing_div">
+	 </div>	 	 
+
+</div>
+
+
+
+<!--ECE branch data-->	
+  
+<div class="branch_div" id="ece">
+		<center><h1>Electronics & Communication Engneering</h1></center>  
+		<!--Semester1-->
+		<div class="semester_div" id="ecesem1">
+			   <h2>Semester1</h2> <hr> 
+			   <div class="semester_content">
+				   <h2>Books</h2> 
+					<table>
+							<tr>
+							  <th>Name</th>
+							  <th>Added by</th>
+							  <th>Enrollment no</th>
+							  <th>Date added</th>
+							</tr>
+							<tr>
+							  <td>oppenhenum-signal</td>
+							  <td>Deepak kumar</td>
+							  <td>18116026</td>
+							  <td>27/09/2019</td>
+							</tr>						 
+					</table>
+			   </div>
+	
+			   <div class="semester_content">
+					<h2>Papers</h2> 
+					<table>
+							<tr>
+							  <th>Name</th>
+							  <th>Added by</th>
+							  <th>Enrollment no</th>
+							  <th> Date added</th>
+							</tr>
+							<tr>
+							  <td>MTE valkenberg 2019</td>
+							  <td>Deepak Kumar</td>
+							  <td>18116026</td>
+							  <td>27/09/2019</td>
+							</tr>		
+					</table>
+			   </div>
+		</div>
+		<!--Semester2-->
+		<div class="semester_div" id="ecesem2">
+				<h2>Semester2</h2> <hr> 
+				<div class="semester_content">
+					<h2>Books</h2> 
+					 <table>
+							 <tr>
+							   <th>Name</th>
+							   <th>Added by</th>
+							   <th>Enrollment no</th>
+							   <th>Date added</th>
+							 </tr>
+							 <tr>
+							   <td>oppenhenum-signal</td>
+							   <td>Deepak kumar</td>
+							   <td>18116026</td>
+							   <td>27/09/2019</td>
+							 </tr>						 
+					 </table>
+				</div>
+	 
+				<div class="semester_content">
+					 <h2>Papers</h2> 
+					 <table>
+							 <tr>
+							   <th>Name</th>
+							   <th>Added by</th>
+							   <th>Enrollment no</th>
+							   <th> Date added</th>
+							 </tr>
+							 <tr>
+							   <td>MTE valkenberg 2019</td>
+							   <td>Deepak Kumar</td>
+							   <td>18116026</td>
+							   <td>27/09/2019</td>
+							 </tr>		
+					 </table>
+				</div>
+		 </div>
+		 <!--Semester3-->
+		<div class="semester_div" id="ecesem3">
+				<h2>Semester3</h2> <hr>
+				<div class="semester_content">
+					<h2>Books</h2> 
+					 <table>
+							 <tr>
+							   <th>Name</th>
+							   <th>Added by</th>
+							   <th>Enrollment no</th>
+							   <th>Date added</th>
+							 </tr>
+							 <tr>
+							   <td>oppenhenum-signal</td>
+							   <td>Deepak kumar</td>
+							   <td>18116026</td>
+							   <td>27/09/2019</td>
+							 </tr>						 
+					 </table>
+				</div>
+	 
+				<div class="semester_content">
+					 <h2>Papers</h2> 
+					 <table>
+							 <tr>
+							   <th>Name</th>
+							   <th>Added by</th>
+							   <th>Enrollment no</th>
+							   <th> Date added</th>
+							 </tr>
+							 <tr>
+							   <td>MTE valkenberg 2019</td>
+							   <td>Deepak Kumar</td>
+							   <td>18116026</td>
+							   <td>27/09/2019</td>
+							 </tr>		
+					 </table>
+				</div>
+		 </div>
+		 <!--Semester4-->
+		<div class="semester_div" id="ecesem4">
+				<h2>Semester4</h2> <hr> 
+				<div class="semester_content">
+					<h2>Books</h2> 
+					 <table>
+							 <tr>
+							   <th>Name</th>
+							   <th>Added by</th>
+							   <th>Enrollment no</th>
+							   <th>Date added</th>
+							 </tr>
+							 <tr>
+							   <td>oppenhenum-signal</td>
+							   <td>Deepak kumar</td>
+							   <td>18116026</td>
+							   <td>27/09/2019</td>
+							 </tr>						 
+					 </table>
+				</div>
+	 
+				<div class="semester_content">
+					 <h2>Papers</h2> 
+					 <table>
+							 <tr>
+							   <th>Name</th>
+							   <th>Added by</th>
+							   <th>Enrollment no</th>
+							   <th> Date added</th>
+							 </tr>
+							 <tr>
+							   <td>MTE valkenberg 2019</td>
+							   <td>Deepak Kumar</td>
+							   <td>18116026</td>
+							   <td>27/09/2019</td>
+							 </tr>		
+					 </table>
+				</div>
+		 </div>
+		 <!--Semester5-->
+		<div class="semester_div" id="ecesem5">
+				<h2>Semester5</h2> <hr> 
+				<div class="semester_content">
+					<h2>Books</h2> 
+					 <table>
+							 <tr>
+							   <th>Name</th>
+							   <th>Added by</th>
+							   <th>Enrollment no</th>
+							   <th>Date added</th>
+							 </tr>
+							 <tr>
+							   <td>oppenhenum-signal</td>
+							   <td>Deepak kumar</td>
+							   <td>18116026</td>
+							   <td>27/09/2019</td>
+							 </tr>						 
+					 </table>
+				</div>
+	 
+				<div class="semester_content">
+					 <h2>Papers</h2> 
+					 <table>
+							 <tr>
+							   <th>Name</th>
+							   <th>Added by</th>
+							   <th>Enrollment no</th>
+							   <th> Date added</th>
+							 </tr>
+							 <tr>
+							   <td>MTE valkenberg 2019</td>
+							   <td>Deepak Kumar</td>
+							   <td>18116026</td>
+							   <td>27/09/2019</td>
+							 </tr>		
+					 </table>
+				</div>
+		 </div>
+		 <!--Semester6-->
+		<div class="semester_div" id="ecesem6">
+				<h2>Semester6</h2> <hr> 
+				<div class="semester_content">
+					<h2>Books</h2> 
+					 <table>
+							 <tr>
+							   <th>Name</th>
+							   <th>Added by</th>
+							   <th>Enrollment no</th>
+							   <th>Date added</th>
+							 </tr>
+							 <tr>
+							   <td>oppenhenum-signal</td>
+							   <td>Deepak kumar</td>
+							   <td>18116026</td>
+							   <td>27/09/2019</td>
+							 </tr>						 
+					 </table>
+				</div>
+	 
+				<div class="semester_content">
+					 <h2>Papers</h2> 
+					 <table>
+							 <tr>
+							   <th>Name</th>
+							   <th>Added by</th>
+							   <th>Enrollment no</th>
+							   <th> Date added</th>
+							 </tr>
+							 <tr>
+							   <td>MTE valkenberg 2019</td>
+							   <td>Deepak Kumar</td>
+							   <td>18116026</td>
+							   <td>27/09/2019</td>
+							 </tr>		
+					 </table>
+				</div>
+		 </div>
+		 <!--Semester7-->
+		<div class="semester_div" id="ecesem7">
+				<h2>Semester7</h2> <hr> 
+				<div class="semester_content">
+					<h2>Books</h2> 
+					 <table>
+							 <tr>
+							   <th>Name</th>
+							   <th>Added by</th>
+							   <th>Enrollment no</th>
+							   <th>Date added</th>
+							 </tr>
+							 <tr>
+							   <td>oppenhenum-signal</td>
+							   <td>Deepak kumar</td>
+							   <td>18116026</td>
+							   <td>27/09/2019</td>
+							 </tr>						 
+					 </table>
+				</div>
+	 
+				<div class="semester_content">
+					 <h2>Papers</h2> 
+					 <table>
+							 <tr>
+							   <th>Name</th>
+							   <th>Added by</th>
+							   <th>Enrollment no</th>
+							   <th> Date added</th>
+							 </tr>
+							 <tr>
+							   <td>MTE valkenberg 2019</td>
+							   <td>Deepak Kumar</td>
+							   <td>18116026</td>
+							   <td>27/09/2019</td>
+							 </tr>		
+					 </table>
+				</div>
+		 </div>
+		 <!--Semester8-->
+		<div class="semester_div" id="ecesem8">
+				<h2>Semester8</h2> <hr> 
+				<div class="semester_content">
+					<h2>Books</h2> 
+					 <table>
+							 <tr>
+							   <th>Name</th>
+							   <th>Added by</th>
+							   <th>Enrollment no</th>
+							   <th>Date added</th>
+							 </tr>
+							 <tr>
+							   <td>oppenhenum-signal</td>
+							   <td>Deepak kumar</td>
+							   <td>18116026</td>
+							   <td>27/09/2019</td>
+							 </tr>						 
+					 </table>
+				</div>
+	 
+				<div class="semester_content">
+					 <h2>Papers</h2> 
+					 <table>
+							 <tr>
+							   <th>Name</th>
+							   <th>Added by</th>
+							   <th>Enrollment no</th>
+							   <th> Date added</th>
+							 </tr>
+							 <tr>
+							   <td>MTE valkenberg 2019</td>
+							   <td>Deepak Kumar</td>
+							   <td>18116026</td>
+							   <td>27/09/2019</td>
+							 </tr>		
+					 </table>
+				</div>
+		 </div>
+		 <div class="balancing_div">
+		 </div>	 	 
+	
+	</div>
+
+  <div>
+  	
+
+  	{% block content %}
+
+
 
 {% endblock %}
+  </div>
+
+
+</body>
+</html>
+
+
