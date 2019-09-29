@@ -1,0 +1,4 @@
+pip install -r requirements.txt
+cd AllInOne
+python manage.py migrate
+python manage.py runserver
